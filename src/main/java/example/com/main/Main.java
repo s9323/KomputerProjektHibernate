@@ -1,11 +1,10 @@
 package example.com.main;
 
-
+import org.hibernate.*;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
 
 import example.com.resoures.Client;
 import example.com.resoures.ClientInterface;
@@ -18,7 +17,7 @@ public class Main
        
     	SessionFactory factory = new Configuration().configure().buildSessionFactory();
     	
-    	Session session = (factory).openSession();
+    	Session session = factory.openSession();
     	
     	ClientInterface<Client> hib = new HibernateClientManager(session);
     	
@@ -27,9 +26,6 @@ public class Main
     	p.getName();
     	
     	hib.save(p);
-    	
-    	
-    	
     	
     }
 
